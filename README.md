@@ -4,7 +4,7 @@ This is a small project for the Raspberry Pi. It consits of a web server (Flask)
 
 Now one may ask for what this is all good? At least for what I used this is to measure the humidity and temperature in my student dorm room and the PWM output was used to control a constant current source that powered LED lamps in order for small room plants not to die in the winter when they don't get enough light in my room :)
 
-To record temperature / humidity data use a chron job on climate/recordSensor.py. I recorded values every 15 minutes. To start the server on every restart just put startClimate.sh in autostart (can also be done with a chron job).
+To record temperature / humidity data use a chron job on climate/recordSensor.py. I recorded values every 15 minutes. To start the server on every restart just fill in the python path in startClimate.sh and put it in autostart (can also be done with a chron job).
 
 Still not happy with design and everything and stopped working on this project but perhaps still interesting for you out there :)
 
