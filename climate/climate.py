@@ -7,7 +7,7 @@ import random
 import string
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash, jsonify
-from crontab import CronTab
+#from crontab import CronTab
 
 
 app = Flask(__name__) # create the application instance :)
@@ -75,7 +75,7 @@ if app.config['RASPBERRY']:
         os.system("gpio -g pwm 18 "+str(mapIntensityToPWM(0)))
     
     try:
-        my_cron = CronTab(user=True)
+        my_cron = None#CronTab(user=True)
         
         with open(app.config['LIGHT_CONFIG']) as json_data_file:
             data = json.load(json_data_file)
@@ -108,8 +108,8 @@ def init_db():
 
 def get_db():
     """Opens a new database connection if there is none yet for the
-        current application context.
-        """
+    current application context.
+    """
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
@@ -163,7 +163,7 @@ def admin():
                 if app.config['LIGHT_STATUS']:
                     os.system("gpio -g pwm 18 "+str(mapIntensityToPWM(app.config['INTENSITY'])))
                     
-                my_cron = CronTab(user=True)
+                my_cron = None#CronTab(user=True)
                 
                 my_cron.remove_all(comment='MEANWELL_LED')
             
@@ -328,11 +328,13 @@ def logout():
 
 @app.route('/webcam')
 def webcam():
+    """Not implemented yet."""
     return redirect(url_for('index'))
 
 def checkTime(timeString):
-    # checks a string if it is a valid time (e.g. 0:15, 22:43)
-    # string is not allowed to contain any extra characters
+    """checks a string if it is a valid time (e.g. 0:15, 22:43)
+    string is not allowed to contain any extra characters
+    """
     match = re.match(r'^(\d{1,2}):(\d{2})$', timeString)
     if match == None:
         return False
