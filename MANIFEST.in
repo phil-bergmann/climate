@@ -1,0 +1,3 @@
+graft climate/templates
+graft climate/static
+include climate/schema.sql

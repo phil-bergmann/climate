@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1 style="text-align:center">Admin Panel</h1>
+<h6 style="text-align: center;"><a href="/">Back!</a></h6>
+<br>
+<div class="row"> 
+    <div class="col-md-offset-3 col-md-6 col-xs-10 col-xs-offset-1">
+        <form class="form-horizontal" action="{{ url_for('admin') }}" method="post">
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Light on:</label>
+                <div class="col-xs-9">
+                    <select class="form-control" id="light_on" name="light_on">
+                        <option>0:00</option>
+                        <option>1:00</option>
+                        <option>2:00</option>
+                        <option>3:00</option>
+                        <option>4:00</option>
+                        <option>6:00</option>
+                        <option>7:00</option>
+                        <option>8:00</option>
+                        <option>9:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Light off:</label>
+                <div class="col-xs-9">
+                    <select class="form-control" id="light_off" name="light_off">
+                        <option>0:00</option>
+                        <option>1:00</option>
+                        <option>2:00</option>
+                        <option>3:00</option>
+                        <option>4:00</option>
+                        <option>6:00</option>
+                        <option>7:00</option>
+                        <option>8:00</option>
+                        <option>9:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Intensity:</label>
+                <div class="col-xs-7">
+                    <div id="slider"></div>
+                </div>
+                <div class="col-xs-2">
+                    <fieldset disabled>
+                        <input type="text" class="form-control" id="sliderVal" aria-describedby="basic-addon1">
+                    </fieldset>
+                </div>
+                <input type="hidden" name="intensity" value="">
+            </div>
+            <div class="form-group">
+                <div class="col-xs-4">
+                    <a role="button" href="admin/light_off" class="btn btn-primary btn-block">Light off!</a>
+                </div>
+                <div class="col-xs-4">
+                    <a role="button" href="admin/light_on" class="btn btn-warning btn-block">Light on!</a>
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-default btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}
